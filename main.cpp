@@ -1,10 +1,53 @@
-// include all the libraries 
-//
-//
-
+#include "wordList.hpp"
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <fstream>
+#include "grid.h"
 void find_matches( grid new_grid(std::string new_file), vector< vector <string> >  new_list){// global function that prints out all the matches 
 
-	
+
+
+	vector< std::string> words;
+	int north,south,east,west;
+
+	for (int i=0;i < new_grid.get_rows(); i++){
+
+
+		for (int j=0; j< new_grid.get_columns(); j++){
+
+			for(int north=
+				
+				
+
+
+
+			}
+
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+	for(int i=0; i<=list.size();i++) {
+
+
+
+
 
 
 
@@ -22,22 +65,22 @@ void search(int n){
 
 	std::cin>> file_name;
 	
-	word_list list;
+	wordList  list;
 
 	switch(n){
 
 	case 1: 
-		//word_list.merge_sort();
-		//break;
+		list.merge_sort(list.getFile());
+		break;
 	case 2: 
 	
-	// word_list.quick_sort();
-	// break;
+	 list.quickSor(list.getFile(),0, list.getFile().size);
+	 break;
 
 	case 3:
 
-	//word_list.inser_sort();
-	//break;
+	list.insertionSort(list.getFile())
+	break;
 
 	}
 	// function call to find_matches 
