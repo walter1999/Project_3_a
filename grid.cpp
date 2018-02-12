@@ -3,15 +3,11 @@
 #include "grid.h"
 // include fstream
 
-grid::grid(){
+grid::grid(std::string new_file){
 
 	ifstream fin;// creates ifstream object
 
-	std::cout<< " Enter the name of the file that you want to read in"<<std::endl;
-
-	string file_name;// file that the user wants to read
-
-	std::cin<<file_name;// assigns the name to file_name
+	std::string file_name= new_file;// file that the user wants to read
 
 	fin.open(file_name.c_str());// opens the file input 
 	
