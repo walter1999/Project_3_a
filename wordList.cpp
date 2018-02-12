@@ -86,53 +86,43 @@ void wordList::quickSort(vector<string> &sort, int start, int finish){
         if (sort[start] < sort[right]) quickSort(sort,start,right);
         if (sort[left] < sort[finish]) quickSort(sort,left,finish);
     
-    }
-/*
-void wordList::mergeSort(vector<string> &sort){
-        
-        int i = 0;  // LHS index
-        int j = 0;  // RHS index
-        
-        while ((i < LHS.size()) && (j < RHS.size()))
-        {
-            if (LHS[i] < RHS[j])
-            {
-                ToReturn.push_back(LHS[i]);
-                ++i;
-            }
-            else
-            {
-                ToReturn.push_back(RHS[j]);
-                ++j;
-            }
-        }
-        
-        while (i < LHS.size())
-        {
-            sort.push_back(LHS[i]);
-            ++i;
-        }
-        
-        while (j < RHS.size())
-        {
-            sort.push_back(RHS[j]);
-            ++j;
-        }
-
-        
-    }
-*/
-void wordList::insertionSort(vector<string> &sort){
+    s_file = sort;
     
-  
+    }
+
+
+vector<string> wordList::mergeSort(vector<string> &input){
+    if(input.size()<=1) return input;
+    
+    vector<string> output(input.size());
+    
+    //Split Vector//
+    int midpoint=0.5*input.size();
+    vector<string> input_left(input.begin(),input.begin()+midpoint);
+    vector<string> input_right(input.begin()+midpoint,input.end());
+    
+    input_left=mergeSort(input_left);
+    input_right=mergeSort(input_right);
+    merge(input_left.begin(),input_left.end(),input_right.begin(),input_right.end(),output.begin());
+    
+    if(output.size() == s_file.size()){
+        s_file = output;}
+    
+    
+    return output;
+    
+    }
+
+void wordList::insertionSort(vector<string> &sort){
     
     int j;
     string val;
+    int iteration = 0;
     
     int size = sort.size();
     
     //iterate through entire list
-    for(int i = 1; i < size; i++){
+    for(int i = 0; i < size; i++){
         val = sort[i];
         
         j = i - 1;
@@ -144,17 +134,21 @@ void wordList::insertionSort(vector<string> &sort){
             std::cout<<sort[j]<<" "<<val<<std::endl;
             
             j = j - 1;
-            
+         
+            iteration++;
         }//end while
         
         sort[j + 1] = val;
         
     }//end for
-
+    std::cout<<iteration<<std::endl;
+    
     s_file = sort;
     }
     
 int wordList::binaryLook(vector <string> &sort, string look, int begin, int end){
+    
+    
     
     if(begin >= end)
     { return -1;}

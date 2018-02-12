@@ -20,9 +20,6 @@ class wordList{
 private:
     
     vector <string> s_file;
-    vector <string> *quick;
-    vector <string> *merge;
-    vector <string> *insert;
     
 public:
     
@@ -38,11 +35,11 @@ public:
     
     void quickSort(vector<string> &sort, int start, int finish);
     
-    void mergeSort(vector<string> &sort);
+    vector<string> mergeSort(vector<string> &input);
     
     void insertionSort(vector<string> &sort);
     
-    int binaryLook(vector<string> &sort, string look, int begin, int end);
+    int binaryLook(vector<string> &sort, string look,int begin , int end);
 
     
 };
