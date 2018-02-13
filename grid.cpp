@@ -1,7 +1,11 @@
 #include <vector>
 #include <string>
 #include "grid.h"
-// include fstream
+#include <fstream>
+#include <string>
+#include <iostream>
+
+grid::grid(){}//default constructor does nothing 
 
 grid::grid(std::string new_file){
 
@@ -44,11 +48,13 @@ int grid:: number_of_columns(){
 
 }
 
-string grid::given_character(int new_row, int new_column)){
+string grid::given_character(int new_row, int new_column)){// returns the characte at given location
 
 	return matrix[row][column];
+}
 
-
-
+vector< vector<string> > grid::get_matrix(){//returns the matrix
+	
+	return matrix;
 
 }
