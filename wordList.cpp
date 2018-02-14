@@ -2,6 +2,7 @@
 //  wordList.cpp
 //  Project_:wq
 //
+//
 //  Created by Thomas Campion on 2/8/18.
 //
 
@@ -28,7 +29,7 @@ void wordList::readFile(string Dir){
         if(!myfile) //Always test the file open.
         {
             std::cout<<"Error opening output file"<<std::endl;
-            system("pause");
+   //         system("pause");
         }
 //while the file is inputting strings into line it will continue to add to the vector
         while(myfile >> line)
@@ -105,7 +106,7 @@ vector<string> wordList::mergeSort(vector<string> &input){
     input_left=mergeSort(input_left);
     input_right=mergeSort(input_right);
     //merges the smaller vectors back into the original but sorted
-    merge(input_left.begin(),input_left.end(),input_right.begin(),input_right.end(),output.begin());
+   // merge(input_left.begin(),input_left.end(),input_right.begin(),input_right.end(),output.begin());
     
     if(output.size() == s_file.size()){
         s_file = output;}

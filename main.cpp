@@ -17,27 +17,27 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 	vector< vector<std::string> > temp_matrix= new_grid.get_matrix();// copies the matrix from class to a global variable
 
-	vector<std::string> temp_dic= new_dic.getList();// copies the dictonary 
+	vector<std::string> temp_dic= new_dic.getFile();// copies the dictonary 
 
-	for (int i=0;i < new_grid.get_rows(); i++){// outer loop to traverse matrix
+	for (int i=0;i < new_grid.number_of_rows(); i++){// outer loop to traverse matrix
 
 
-		for (int j=0; j< new_grid.get_columns(); j++){// inner loop to traverse matrix
+		for (int j=0; j< new_grid.number_of_columns(); j++){// inner loop to traverse matrix
 
 			for(int north=i; north<=0; north--){// loop to add words in the north direction
 
 				if(north==i){// firts character is added as single letter
 
-				 word= matrix[i][j]; 
+				 word= temp_matrix[i][j]; 
 
 				 words.push_back(word);
 				
 					}
-				else if(north % new_grid.get_rows() -1 >0 && north==0){// wrapping around the edges 
+				else if(north % new_grid.number_of_rows() -1 >0 && north==0){// wrapping around the edges 
 
-					for(int k= new_grid.get_rows()-1; k<i;k--){
+					for(int k= new_grid.number_of_rows()-1; k<i;k--){
 
-							word+= matrix[k][j];
+							word+= temp_matrix[k][j];
 							 words.push_back(word);
 
 						}
@@ -48,7 +48,7 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 
 
-					word+=matrix[north][j];
+					word+=temp_matrix[north][j];
 
 
 					words.push_back(word);
@@ -58,20 +58,20 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 				}
 				
 				
-				for(int south=i; north<=new_grid.get_rows() -1 ; north++){// same a norht but possite direction
+				for(int south=i; south<=new_grid.number_of_rows() -1 ; south++){// same a norht but possite direction
 
-                                if(north==i){
+                                if(south==i){
 
-                                 word= matrix[i][j];
+                                 word=temp_matrix[i][j];
 
                                  words.push_back(word);
 
                                         }
-                                else if(i % new_grid.get_rows() -1 >0 && north==new_grid.get_rows()){// switch start and ending values. Reverse from north
+                                else if(i % new_grid.number_of_rows() -1 >0 && south==new_grid.number_of_rows() -1){// switch start and ending values. Reverse from north
 
                                         for(int k=0; k<i;k++){
 
-                                                        word+= matrix[k][j];
+                                                        word+=temp_matrix[k][j];
                                                          words.push_back(word);
 
                                                 }
@@ -82,7 +82,7 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 
 
-                                        word+=matrix[south][j];
+                                        word+=temp_matrix[south][j];
 
 
                                         words.push_back(word);
@@ -90,20 +90,20 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 
                                 }
-			 for(int east=j; east<=new_grid.get_columns() -1; east++){// loop to travel right 
+			 for(int east=j; east<=new_grid.number_of_columns() -1; east++){// loop to travel right 
 
                                 if(east==j){
 
-                                 word= matrix[i][east];
+                                 word= temp_matrix[i][east];
 
                                  words.push_back(word);
 
                                         }
-                                else if(j % new_grid.get_rows() -1 >0 && east==new_grid.get_columns() -1){// wrap around edges
+                                else if(j % new_grid.number_of_rows() -1 >0 && east==new_grid.number_of_columns() -1){// wrap around edges
 
                                         for(int k= 0; k<i;k++){
 
-                                                        word+= matrix[i][k];
+                                                        word+= temp_matrix[i][k];
                                                          words.push_back(word);
 
                                                 }
@@ -114,7 +114,7 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 
 
-                                        word+=matrix[i][east];
+                                        word+= temp_matrix[i][east];
 
 
                                         words.push_back(word);
@@ -123,20 +123,20 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
                                 }
 
-			     for(int west=j; westt<=0; west--){// does the oppsite of east
+			     for(int west=j; west<=0; west--){// does the oppsite of east
 
                                 if(west==j){
 
-                                 word= matrix[i][west];
+                                 word= temp_matrix[i][west];
 
                                  words.push_back(word);
 
                                         }
-                                else if(j % new_grid.get_rows() -1 >0 && west==0){
+                                else if(j % new_grid.number_of_rows() -1 >0 && west==0){
 
-                                        for(int k= new_grid.get_columns() -1; k<i;k--){
+                                        for(int k= new_grid.number_of_columns() -1; k<i;k--){
 
-                                                        word+= matrix[i][k];
+                                                        word+=temp_matrix[i][k];
                                                          words.push_back(word);
 
                                                 }
@@ -147,7 +147,7 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 
 
-                                        word+=matrix[i][west];
+                                        word+=temp_matrix[i][west];
 
 
                                         words.push_back(word);
@@ -162,34 +162,30 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 		}
 
-	}
+//	}
 
 	int found;// temporary value. Hold index of found element
 
-	for(int i=0; i<=list.size();i++) {// loop that traverses the hold dictionary
+	for(int w=0; w<words.size();w++) {// loop that traverses the hold dictionary
 
-	found=new_dic.binaryLook(dic, words[i],0, dic.size());// uses binary search to find the word
+		found=new_dic.binaryLook(temp_dic, words[w],0, temp_dic.size());// uses binary search to find the word
 	
 		if(found){// if the word was found print it to the screen
 
-		std::cout<<dic[found]<<std::endl;
+		std::cout<<temp_dic[found]<<std::endl;
 
 		}
+
 
 	}
 
 
-
-
-
-
-
-
-
 }
+
+//}
 void search(int n){// global function that allows users to pick which sorting method to use
 
-	string file_name;// name of file
+	std::string file_name;// name of file
 
 	clock_t start_time_sort, start_time_find;// measures time 	
 	
@@ -199,23 +195,23 @@ void search(int n){// global function that allows users to pick which sorting me
 	
 	wordList  list;// instnace of a wordList
 	
-	grid obj(filename);// instance of grid
+	grid obj(file_name);// instance of grid
 
 	start_time_sort= clock();// start time 
 	
 	switch(n){// switches n for which algo. to use 	
 
 	case 1: 
-		list.merge_sort(list.getFile());
+		list.mergeSort(list.getFile());
 		break;
 	case 2: 
 	
-		 list.quickSor(list.getFile(),0, list.getFile().size);
+		 list.quickSort(list.getFile(),0, list.getFile().size());
 	 	break;	
 
 	case 3:
 
-		list.insertionSort(list.getFile())
+		list.insertionSort(list.getFile());
 		break;
 		
 
@@ -226,9 +222,9 @@ void search(int n){// global function that allows users to pick which sorting me
 	std::cout<<" Time to sort: " << diff << std::endl;// prints it to the screen 
 	// function call to find_matches 
 		
-	start_time_find=clock//
+	start_time_find=clock();//
 	
-	find_matches(obj , list));// fucntion call to find matches 
+	find_matches(obj , list);// fucntion call to find matches 
 	
 	int diff_2= clock()-start_time_find;// time to find matches 
 
@@ -245,7 +241,7 @@ int main(){
 
 	std::cout<<" Enter 1 for merge sort, enter 2 for quick sort, enter 3 for insertio sort"<<std::endl;
 
-	std::cin>>option // switches the input 
+	std::cin>>option; // switches the input 
 
 	search(option); // call search
 
