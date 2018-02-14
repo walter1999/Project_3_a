@@ -56,5 +56,5 @@ string grid::given_character(int new_row, int new_column){// returns the charact
 vector< vector<string> > grid::get_matrix(){//returns the matrix
 	
 	return matrix;
-
 }
+grid::~grid(){}
