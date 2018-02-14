@@ -137,7 +137,7 @@ void wordList::insertionSort(vector<string> &sort){
             
             j = j - 1;
          
-            iteration++;
+
         }//end while
         
         sort[j + 1] = val;

@@ -22,11 +22,11 @@ grid::grid(std::string new_file){
 
 	}
 
-	fin >> rows >> columns;// reads the first line which contanis the number of rows and columns
+	fin >> rows >> column;// reads the first line which contanis the number of rows and columns
 
-	for(int i=0; i<row; i++){//outer loops 
+	for(int i=0; i<rows; i++){//outer loops
 
-	for(int j=0; j<columns){// inner loops 
+        for(int j=0; j<column ; j++){// inner loops
 		
 	fin>>matrix[i][j];// inputs letter into matrix 
 
@@ -44,13 +44,13 @@ int grid:: number_of_rows(){
 
 int grid:: number_of_columns(){
 
-	return columns;// retunrs number of columns in the file 
+	return column;// retunrs number of columns in the file
 
 }
 
-string grid::given_character(int new_row, int new_column)){// returns the characte at given location
+string grid::given_character(int new_row, int new_column){// returns the characte at given location
 
-	return matrix[row][column];
+	return matrix[new_row][new_column];
 }
 
 vector< vector<string> > grid::get_matrix(){//returns the matrix
