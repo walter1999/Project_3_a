@@ -7,6 +7,8 @@
 #include "grid.h"
 #include "matrix.h"
 #include <time.h>
+#include "Node.h"
+#include "hashTable.h"
 void find_matches( grid& new_grid, wordList& new_dic){// global function that prints out all the matches 
 
 
@@ -15,7 +17,7 @@ void find_matches( grid& new_grid, wordList& new_dic){// global function that pr
 
 	std::string word;// temp variable to add content to vector words
 
-	vector< vector<std::string> > temp_matrix= new_grid.get_matrix();// copies the matrix from class to a global variable
+	matrix<std::string>  temp_matrix= new_grid.get_matrix();// copies the matrix from class to a global variable
 
 	vector<std::string> temp_dic= new_dic.getFile();// copies the dictonary 
 
@@ -187,6 +189,8 @@ void search(int n){// global function that allows users to pick which sorting me
 
 	std::string file_name;// name of file
 
+	vector< std:: string> listWords;
+
 	clock_t start_time_sort, start_time_find;// measures time 	
 	
 	std::cout<<" Enter the file you want to read from"<<std::endl;// prompts user
@@ -194,6 +198,8 @@ void search(int n){// global function that allows users to pick which sorting me
 	std::cin>> file_name;// gets name from the user
 	
 	wordList  list;// instnace of a wordList
+
+	listWords = list.getFile();
 	
 	grid obj(file_name);// instance of grid
 
@@ -213,7 +219,15 @@ void search(int n){// global function that allows users to pick which sorting me
 
 		list.insertionSort(list.getFile());
 		break;
+	case 4:
 		
+		hashTable<std::string> obj(list.getFile().size());
+
+		for( int i=0; i<list.getFile().size(); i++){
+
+			obj.AddItem(listWords[i]);
+
+		}
 
 	} 
 

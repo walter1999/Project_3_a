@@ -1,5 +1,5 @@
-word.exe: wordList.o main.o grid.o
-	g++ wordList.o main.o grid.o -o word
+output: wordList.o main.o grid.o
+	g++ wordList.o main.o grid.o -o output
 
 wordList.o: wordList.cpp wordList.hpp
 	g++ -c wordList.cpp
