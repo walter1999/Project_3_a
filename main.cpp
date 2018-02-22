@@ -228,7 +228,16 @@ void search(int n){// global function that allows users to pick which sorting me
 			obj.AddItem(listWords[i]);
 
 		}
+		break;
+	case 5:
+		heap heap_list;
 
+		heap_list.unsort = dict;
+
+		heap_list.heapsort(heap_list.unsort, heap_list.unsort.size()-1);
+			
+		
+		 break;
 	} 
 
 	int diff= clock()-start_time_sort;// difference gives toltal time to sort
@@ -254,6 +263,8 @@ int main(){
 	int option;// user input 
 
 	std::cout<<" Enter 1 for merge sort, enter 2 for quick sort, enter 3 for insertio sort"<<std::endl;
+	
+		
 
 	std::cin>>option; // switches the input 
 
