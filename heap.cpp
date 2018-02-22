@@ -26,7 +26,7 @@ int heap::left(int num){
 }
 int heap::right(int num){
     int i;
-    i = num*2;
+    i = num*2 + 1;
     return i;
 }
 string heap::nth(int nth, bool SoU){
@@ -42,17 +42,19 @@ void heap::initializeMaxHeap(vector<string> unsorted){
     unsort = unsorted;
 }
 
-void heap::maxHeapify(vector<string> &unsorted, int n, int i){
+void heap::maxHeapify(vector<string> &unsorted, int i){
     
+    int n = unsorted.size();
     int largest = i;
     int r = right(i);
     int l = left(i);
     
-    if (l < n && unsorted[l] > unsorted[largest])
+    if (l <= n && unsorted[l] > unsorted[largest])
         largest = l;
+
     
     // If right child is larger than largest so far
-    if (r < n && unsorted[r] > unsorted[largest])
+    if (r <= n && unsorted[r] > unsorted[largest])
         largest = r;
     
     // If largest is not root
@@ -61,7 +63,7 @@ void heap::maxHeapify(vector<string> &unsorted, int n, int i){
         swap(unsorted[i], unsorted[largest]);
         
         // Recursively heapify the affected sub-tree
-        maxHeapify(unsorted, n, largest);
+        maxHeapify(unsorted, largest);
     }
 }
 
@@ -88,18 +90,31 @@ void heap::minHeapify(vector<string> &unsorted, int n, int i){
     }
 }
 
+void heap::buildmaxh(vector<string> &unsorted)
+{
+    int n = unsorted.size();
+    int i;
+    for(i=floor(n/2);i>=0;i--)
+        maxHeapify(unsorted, i);
+}
+
 void heap::heapSort(vector<string> &unsorted, int n){
     
-    for (int i = n / 2 - 1; i >= 0; i--)
-        maxHeapify(unsorted, n, i);
-    
+    buildmaxh(unsorted);
+
     // One by one extract an element from heap
-    for (int i=n-1; i>=0; i--)
+    for (int i=n; i>0; i--)
     {
+        std::cout<<i<<std::endl;
         // Move current root to end
         swap(unsorted[0], unsorted[i]);
         
         // call max heapify on the reduced heap
-        maxHeapify(unsorted, i, 0);
+        maxHeapify(unsorted, i);
     }
+    for(int i = 0; i<n; i++){
+
+    }
+    hsorted = unsorted;
+
 }

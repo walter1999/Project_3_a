@@ -30,9 +30,11 @@ public:
     
     void initializeMaxHeap(vector<string> unsorted);
     
-    void maxHeapify(vector<string> &unsorted, int cur, int offset);
+    void maxHeapify(vector<string> &unsorted, int offset);
     
     void minHeapify(vector<string> &unsorted, int cur, int offset);
+    
+    void buildmaxh(vector<string> &unsorted);
     
     void heapSort(vector<string> &unsorted, int n);
     
