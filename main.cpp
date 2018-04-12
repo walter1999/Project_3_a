@@ -9,6 +9,8 @@
 #include <time.h>
 #include "Node.h"
 #include "hashTable.h"
+#include "heap.hpp"
+
 void find_matches( grid& new_grid, wordList& new_dic){// global function that prints out all the matches 
 
 
@@ -220,24 +222,24 @@ void search(int n){// global function that allows users to pick which sorting me
 		list.insertionSort(list.getFile());
 		break;
 	case 4:
-		
-		hashTable<std::string> obj(list.getFile().size());
+		int a = listWords.size();// this the problem. The compiler is having issues assigning listWords.size to an int 
+		hashTable<std::string> obj(a);
 
 		for( int i=0; i<list.getFile().size(); i++){
 
-			obj.AddItem(listWords[i]);
+			obj.addItem(listWords[i]);
 
 		}
 		break;
-	case 5:
+	/*case 5:
+
 		heap heap_list;
 
-		heap_list.unsort = dict;
+		heap_list.unsort = list.getFile();
 
-		heap_list.heapsort(heap_list.unsort, heap_list.unsort.size()-1);
-			
+		heap_list.heapSort(heap_list.unsort, heap_list.unsort.size()-1);	
 		
-		 break;
+		break;*/
 	} 
 
 	int diff= clock()-start_time_sort;// difference gives toltal time to sort
@@ -262,7 +264,7 @@ int main(){
 
 	int option;// user input 
 
-	std::cout<<" Enter 1 for merge sort, enter 2 for quick sort, enter 3 for insertio sort"<<std::endl;
+	std::cout<<" Enter 1 for merge sort, enter 2 for quick sort, enter 3 for insertio sort, 4 to create hash table, 5 for use heap sort"<<std::endl;
 	
 		
 

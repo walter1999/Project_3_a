@@ -7,13 +7,13 @@
 #include "Node.h"
  
 
-template <typename T>
+template <class T>
 
 class hashTable{
 	private:
-	 vector <Node* <T> > hashT; 
+	 std::vector <Node*> hashT; 
 
-	int tableSize; 
+	 int tableSize; 
 
 
 
@@ -29,7 +29,7 @@ class hashTable{
 	
 	T inList(T item);
 	
-	~hashTable() 
+	~hashTable();
 
 
 
@@ -37,4 +37,4 @@ class hashTable{
 
 
 
-}
+};

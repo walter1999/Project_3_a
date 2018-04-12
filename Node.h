@@ -4,11 +4,11 @@
 #define Node_h
 
 
-template <typename T>
+
 
 class Node{// creates node class
 public:
-     T word;
+     std::string  word;
     Node *next;// node pointer
 
     Node() : next(NULL){}// default constructor sets next pointer to null

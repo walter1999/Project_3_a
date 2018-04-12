@@ -24,7 +24,7 @@ grid::grid(std::string new_file){
 	
 	while(fin>> rows >> column){
 	//std::cout<<rows<< " " <<column<<std::endl;
-	new_matrix.resize(rows,column); 
+	new_matrix.resize(rows-1,column-1); 
 	while( fin>>character){
 	//	std::cout<<character;
 		new_matrix[rows2][columns2]=character;

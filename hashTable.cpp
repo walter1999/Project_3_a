@@ -7,22 +7,23 @@
 
 // include hashTable 
 
-
-hashTable:: hashTable(int size ){
+template <class  T>
+hashTable<T> :: hashTable(int size ){
 
 	tableSize=(size/100);
 
-	hashT(tableSize, Node*<T> pointer);
+	hashT(tableSize, Node* pointer);
 
-	for(int i=0; i<tableSize; i++){
-		
+	for(int i=0; i<tableSize; i++){			
+
+								
 			hashT[i]=new Node; 
 			
 			hashT[i]->word="empty";
 			
 			hashT[i]->next= NULL;
 
-	} 
+	 
 
 
 
@@ -31,7 +32,7 @@ hashTable:: hashTable(int size ){
 
 }
 
-void hashTable :: addItem( T item){
+void hashTable<T>  :: addItem( T item){
 	int index= hash(item);
 
 	if ( hashT[index]->word== "empty"){
@@ -142,7 +143,7 @@ void hashTable :: deleteItem( T item) {
 
 
 
-int hashTable :: hash( T item){
+int hashTable<T> :: hash( T item){
 
 	int hashValue=0;
 	
@@ -162,7 +163,7 @@ int hashTable :: hash( T item){
 }
 
 
-T hashTable :: inList( T item ){
+T hashTable<T> :: inList( T item ){
 
 	int index= hash( item ); 
 
@@ -185,7 +186,7 @@ T hashTable :: inList( T item ){
 }
 
 
-hashTable :: ~hashTable(){}
+hashTable<T> :: ~hashTable(){}
 
 
 
