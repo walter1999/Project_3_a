@@ -8,7 +8,7 @@
 
 class Node{// creates node class
 public:
-     std::string  word;
+    std::string  word;
     Node *next;// node pointer
 
     Node() : next(NULL){}// default constructor sets next pointer to null

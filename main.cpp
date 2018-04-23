@@ -207,7 +207,8 @@ void search(int n){// global function that allows users to pick which sorting me
 
 	start_time_sort= clock();// start time 
 	
-	switch(n){// switches n for which algo. to use 	
+	switch(n)
+	{// switches n for which algo. to use 	
 
 	case 1: 
 		list.mergeSort(list.getFile());
@@ -231,15 +232,15 @@ void search(int n){// global function that allows users to pick which sorting me
 
 		}
 		break;
-	/*case 5:
+	case 5:
 
 		heap heap_list;
-
+s
 		heap_list.unsort = list.getFile();
 
 		heap_list.heapSort(heap_list.unsort, heap_list.unsort.size()-1);	
 		
-		break;*/
+		break;
 	} 
 
 	int diff= clock()-start_time_sort;// difference gives toltal time to sort

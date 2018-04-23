@@ -11,7 +11,11 @@ template <class T>
 
 class hashTable{
 	private:
-	 std::vector <Node*> hashT; 
+	 struct item{
+		 std::string word;
+		 item* next;
+		 
+	 }; 
 
 	 int tableSize; 
 

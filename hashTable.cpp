@@ -12,12 +12,12 @@ hashTable<T> :: hashTable(int size ){
 
 	tableSize=(size/100);
 
-	hashT(tableSize, Node* pointer);
+	item *HashTable[tableSize];
 
 	for(int i=0; i<tableSize; i++){			
 
 								
-			hashT[i]=new Node; 
+			hashTable[i]=new item; 
 			
 			hashT[i]->word="empty";
 			
@@ -35,7 +35,7 @@ hashTable<T> :: hashTable(int size ){
 void hashTable<T>  :: addItem( T item){
 	int index= hash(item);
 
-	if ( hashT[index]->word== "empty"){
+	if ( hashTable[index]->word== "empty"){
 
 		hashT[index]->word= item; 
 
@@ -43,9 +43,9 @@ void hashTable<T>  :: addItem( T item){
 	}
 	else{
 
-		Node* prt= hashT[index];
+		item* prt= hashT[index];
 
-		Node*  newEntry= new Node;
+		item*  newEntry= new item;
 		
 		newEntry->word= item;
 		
